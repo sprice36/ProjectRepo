@@ -42,41 +42,8 @@ function getTeamID(teamName){
 });
 
 }
-/*
-getTeamID('Red Sox');
-getTeamID('Yankees');
-getTeamID('Rays');
-getTeamID('Blue Jays');
-getTeamID('Orioles');
-getTeamID('Indians');
-getTeamID('Tigers');
-getTeamID('Twins');
-getTeamID('Royals');
-getTeamID('White Sox');
-getTeamID('Astros');
-getTeamID('Mariners');
-getTeamID('Angels');
-getTeamID('Athletics');
-getTeamID('Rangers');
-getTeamID('Nationals');
-getTeamID('Braves');
-getTeamID('Phillies');
-getTeamID('Mets');
-getTeamID('Marlins');
-getTeamID('Brewers');
-getTeamID('Cubs');
-getTeamID('Cardinals');
-getTeamID('Pirates');
-getTeamID('Reds');
-getTeamID('Rockies');
-getTeamID('Diamondbacks');
-getTeamID('Dodgers');
-getTeamID('Giants');
-getTeamID('Padres');
 
-*/
-
-var teams  =       [ {name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
+var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
                      {name: 'Yankees',  ID: 'a09ec676-f887-43dc-bbb3-cf4bbaee9a18'},
                      {name: 'Rays',     ID:   'bdc11650-6f74-49c4-875e-778aeb7632d9'},
                      {name: 'Blue Jays', ID:    '1d678440-b4b1-4954-9b39-70afb3ebbcfa'},
@@ -106,8 +73,10 @@ var teams  =       [ {name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
                      {name: 'Dodgers', ID:    'ef64da7f-cfaf-4300-87b0-9313386b977c'},
                      {name: 'Giants', ID:    'a7723160-10b7-4277-a309-d8dd95a8ae65'},
                      {name: 'Padres', ID:    'd52d5339-cbdd-43f3-9dfa-a42fd588b9a3' }
+
                        ];
 
+venues = 
 
 
 function getTeamName(idNumber){
@@ -214,3 +183,50 @@ function getPlayerInfo(team){
 }
 
 //getPlayerInfo('Braves');
+
+function getLocation(){
+
+    $.get(dailyScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+       // console.log(keys);
+        var locationObject = {};
+        var locationArray = [];
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+            // console.log(libraryArray);
+             
+            libraryArray.forEach(function (data){
+                var itemsArray = [];
+                var items = Object.values(data);
+              //    console.log(items);
+            
+                 items.forEach(function (data){
+                var scheduleData = Object.values(data);
+                 //   console.log(scheduleData);
+         
+                scheduleData.forEach(function(data) {
+                    var gameData = Object.values(data);
+                       var location = gameData[12];
+                       
+                       if (location != null && location['lat'] > 0){   
+                            var latString = location.lat;
+                            var latNumber = parseFloat(latString);
+                            var lngString = location.lng;
+                            var lngNumber = parseFloat(lngString);
+                            var locationObject = {lat: latNumber , lng: lngNumber};                        
+                            locationArray.push(locationObject);
+                        }
+                      }); 
+                 });  
+                
+             }); 
+           
+         });
+        // console.log(locationArray);
+           initMap(locationArray[0]);      
+     });   
+}
+
+//getLocation();
