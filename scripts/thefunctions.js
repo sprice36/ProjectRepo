@@ -76,7 +76,6 @@ var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
 
                        ];
 
-venues = 
 
 
 function getTeamName(idNumber){
@@ -184,7 +183,7 @@ function getPlayerInfo(team){
 
 //getPlayerInfo('Braves');
 
-function getLocation(){
+function getLocation(gameID){
 
     $.get(dailyScheduleAPI, function(data){
         var libraryArray = [];
@@ -192,6 +191,7 @@ function getLocation(){
        // console.log(keys);
         var locationObject = {};
         var locationArray = [];
+        var gameIdentification = [];
        keys.forEach(function(aKey){
            var aLibrary = data[aKey];
            libraryArray.push(aLibrary);
@@ -204,29 +204,122 @@ function getLocation(){
             
                  items.forEach(function (data){
                 var scheduleData = Object.values(data);
-                 //   console.log(scheduleData);
-         
+                  console.log(scheduleData);
+                  gameIdentification.push(scheduleData[0]);
+                //console.log("gameIdentification no" + gameIdentification);
+        
+                  //  console.log("gameIdentification no" + gameIdentification);
+                if (gameIdentification != gameID){
+                     gameIdentification.pop();
+                    // console.log("gameIdentification no" + gameIdentification);
+                }
+                else  {
                 scheduleData.forEach(function(data) {
                     var gameData = Object.values(data);
+                   // console.log(gameData); 
+                   
                        var location = gameData[12];
-                       
-                       if (location != null && location['lat'] > 0){   
+                 
+                       if (location != null && location['lat'] > 0 ){   
                             var latString = location.lat;
                             var latNumber = parseFloat(latString);
                             var lngString = location.lng;
                             var lngNumber = parseFloat(lngString);
                             var locationObject = {lat: latNumber , lng: lngNumber};                        
                             locationArray.push(locationObject);
+                        
                         }
-                      }); 
+                      });
+                    }
+                 
                  });  
                 
              }); 
            
          });
         // console.log(locationArray);
-           initMap(locationArray[0]);      
+        initMap(locationArray[0]);          
      });   
 }
 
-//getLocation();
+//getLocation('5f5d7326-79d1-4f9b-a268-0644809485eb');
+
+function getGameIDs(){
+     
+    $.get(dailyScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+       // console.log(keys);
+        var locationObject = {};
+        var gameIDArray = [];
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+            // console.log(libraryArray);
+             
+            libraryArray.forEach(function (data){
+                var itemsArray = [];
+                var items = Object.values(data);
+              //    console.log(items);
+            
+                 items.forEach(function (data){
+                var scheduleData = Object.values(data);
+                var gameID = scheduleData[0];
+                if (gameID != null){
+               
+                    console.log(gameID);
+                 }
+            });
+        });
+    });
+});
+}
+
+function getGame(gameID) {
+    $.get(leagueScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+      //  console.log(keys);
+        var games
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+        //   console.log(libraryArray);
+
+           libraryArray.forEach(function (data){
+            var itemsArray = [];
+            var items = Object.values(data);
+             //console.log(items);
+
+             items.forEach(function (data){
+                var gamesData = Object.values(data);
+                var gameinfo = gamesData[0];
+                 //  console.log(gameinfo);
+                
+                 if (gameinfo == gameID){
+
+                  var awayTeam = data['away_team'];
+                  var homeTeam = data['home_team'];
+
+                  var awayTeamName = getTeamName(awayTeam);
+                  var homeTeamName = getTeamName(homeTeam);
+                  console.log("found it at" + gameinfo);
+                  console.log("away team:"+  awayTeamName);
+                  console.log("home team:" + homeTeamName);
+                  
+                  var venueData = Object.values(data['venue']);
+                  console.log("venue information + "+ venueData);
+                
+                } 
+        
+             });
+           });
+             
+        });
+        getLocation(gameID);
+    });
+}
+
+//getGameIDs();
+getGame('5f5d7326-79d1-4f9b-a268-0644809485eb');
+
