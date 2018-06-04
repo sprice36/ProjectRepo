@@ -43,6 +43,55 @@ function getTeamID(teamName){
 
 }
 
+//getTeamID('Braves');
+//nice to have
+function getStandings(){
+    
+  $.get(standingsAPI, function(data){
+    var libraryArray = [];
+    var keys = Object.keys(data);
+   // console.log(keys);
+
+    keys.forEach(function(aKey){
+        var aLibrary = data[aKey];
+        libraryArray.push(aLibrary);
+     //   console.log(libraryArray);
+    
+    libraryArray.forEach(function (data){
+        var itemsArray = [];
+        var items = Object.values(data['season']);
+         //console.log(items);
+    
+         items[3].forEach(function (data){
+        var leaguesData = Object.values(data);
+        console.log(leaguesData);
+
+        leaguesData[3].forEach(function(data) {
+            var divisionData = Object.values(data);
+            console.log(divisionData);
+
+       /* divisionData[3].forEach(function(data) {
+            var teamData = Object.values(data);
+              console.log(teamData);
+           // if (teamName == data.name){
+             //   var ID = data.id;
+               // console.log(data.name);
+                //return console.log(data.name + '    ' + ID);
+                
+                 //}
+                         
+           }) */
+          })
+       });
+     }); 
+   });
+});
+
+}
+
+//getStandings();
+
+
 var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
                      {name: 'Yankees',  ID: 'a09ec676-f887-43dc-bbb3-cf4bbaee9a18'},
                      {name: 'Rays',     ID:   'bdc11650-6f74-49c4-875e-778aeb7632d9'},
@@ -76,7 +125,43 @@ var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
 
                        ];
 
+var images = [  {name: 'Orioles', image: 'https://securea.mlb.com/assets/images/0/8/2/267952082/cuts/320x180/cut.jpg'},
+                {name: 'Red Sox', image: 'https://securea.mlb.com/assets/images/2/8/8/267952288/cuts/320x180/cut.jpg'},
+                {name: 'White Sox', image: 'https://securea.mlb.com/assets/images/2/9/0/267952290/cuts/320x180/cut.jpg'},
+                {name: 'Indians', image: 'https://securea.mlb.com/assets/images/2/9/4/267952294/cuts/320x180/cut.jpg'},
+                {name: 'Tigers', image: 'https://securea.mlb.com/assets/images/1/9/8/267952198/cuts/320x180/cut.jpg'},
+                {name: 'Astros' , image: 'https://securea.mlb.com/assets/images/3/0/6/267952306/cuts/320x180/cut.jpg'},
+                {name: 'Royals', image: 'https://securea.mlb.com/assets/images/3/0/8/267952308/cuts/320x180/cut.jpg'},
+                {name: 'Angels', image: 'https://securea.mlb.com/assets/images/3/1/2/267952312/cuts/320x180/cut.jpg'},
+                {name: 'Twins' , image: 'https://securea.mlb.com/assets/images/4/1/2/267952412/cuts/320x180/cut.jpg'},
+                {name: 'Yankees' , image: 'https://securea.mlb.com/assets/images/4/2/0/267952420/cuts/320x180/cut.jpg'},
+                {name: 'Athletics' , image: 'https://securea.mlb.com/assets/images/5/2/0/267952520/cuts/320x180/cut.jpg'},
+                {name: 'Mariners' , image: 'https://securea.mlb.com/assets/images/4/9/6/267952496/cuts/320x180/cut.jpg'},
+                {name: 'Rays', image: 'https://securea.mlb.com/assets/images/4/2/8/267952428/cuts/320x180/cut.jpg'}, 
+                {name: 'Rangers' , image: 'https://securea.mlb.com/assets/images/4/3/2/267952432/cuts/320x180/cut.jpg'},
+                {name: 'BlueJays', image: 'https://securea.mlb.com/assets/images/5/3/2/267952532/cuts/320x180/cut.jpg'},
+                {name: 'Diamondbacks', image: 'https://securea.mlb.com/assets/images/7/1/8/267947718/cuts/320x180/cut.jpg'},
+                {name: 'Braves' , image: 'https://securea.mlb.com/assets/images/2/0/8/267951208/cuts/320x180/cut.jpg'},
+                {name: 'Cubs' , image: 'https://securea.mlb.com/assets/images/7/1/2/267951712/cuts/320x180/cut.jpg'},
+                {name: 'Reds' , image: 'https://securea.mlb.com/assets/images/7/2/2/267951722/cuts/320x180/cut.jpg'},
+                {name: 'Rockies' , image: 'https://securea.mlb.com/assets/images/7/2/4/267951724/cuts/320x180/cut.jpg'},
+                {name: 'Dodgers' , image: 'https://securea.mlb.com/assets/images/7/2/8/267951728/cuts/320x180/cut.jpg'},
+                {name: 'Marlins' , image: 'https://securea.mlb.com/assets/images/8/3/4/267951834/cuts/320x180/cut.jpg'}, 
+                {name: 'Brewers' , image: 'https://securea.mlb.com/assets/images/8/4/0/267951840/cuts/320x180/cut.jpg'}, 
+                {name: 'Mets', image: 'https://securea.mlb.com/assets/images/5/5/6/267951556/cuts/320x180/cut.jpg'},
+                {name: 'Phillies' , image: 'https://securea.mlb.com/assets/images/8/6/0/267951860/cuts/320x180/cut.jpg'},
+                {name: 'Pirates' , image: 'https://securea.mlb.com/assets/images/9/6/2/267951962/cuts/320x180/cut.jpg'},
+                {name: 'Padres' , image: 'https://securea.mlb.com/assets/images/9/6/6/267951966/cuts/320x180/cut.jpg'},
+                {name: 'Giants' , image: 'https://securea.mlb.com/assets/images/9/7/0/267951970/cuts/320x180/cut.jpg'},
+                {name: 'Cardinals' , image: 'https://securea.mlb.com/assets/images/8/7/2/267951872/cuts/320x180/cut.jpg'},
+                {name: 'Nationals' , image: 'https://securea.mlb.com/assets/images/8/7/6/267951876/cuts/320x180/cut.jpg'}
+          ];
+             
+function getImage(team){
+    return team.image;
+}
 
+//getImage('Mets');
 
 function getTeamName(idNumber){
     $.get(standingsAPI, function(data){
@@ -279,6 +364,7 @@ function getGame(gameID) {
     $.get(leagueScheduleAPI, function(data){
         var libraryArray = [];
         var keys = Object.keys(data);
+        var $venueField = '';
       //  console.log(keys);
         var games
        keys.forEach(function(aKey){
@@ -294,22 +380,25 @@ function getGame(gameID) {
              items.forEach(function (data){
                 var gamesData = Object.values(data);
                 var gameinfo = gamesData[0];
-                 //  console.log(gameinfo);
+                  //    console.log(gameinfo);
                 
                  if (gameinfo == gameID){
 
                   var awayTeam = data['away_team'];
                   var homeTeam = data['home_team'];
 
-                  var awayTeamName = getTeamName(awayTeam);
+                  /*var awayTeamName = getTeamName(awayTeam);
                   var homeTeamName = getTeamName(homeTeam);
                   console.log("found it at" + gameinfo);
                   console.log("away team:"+  awayTeamName);
                   console.log("home team:" + homeTeamName); 
-                  
+                  */
                   var venueData = Object.values(data['venue']);
-                  console.log("venue information + "+ venueData);
-                
+                  $venueField = $(`<p>`, {text : `${venueData}` });
+                   for (var i = 0; i < 1; i++){
+                  
+                  $(document.body).append($venueField);  
+                  }
                 } 
         
              });
