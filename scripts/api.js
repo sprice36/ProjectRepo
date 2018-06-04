@@ -1,6 +1,12 @@
 //cors proxy
 //http://my-little-cors-proxy.herokuapp.com/
 
+//API key = q6hs5yjn3f87a4ucsxzxuc6m
+var today = new Date();
+var day = today.getDate();
+var month = today.getMonth() + 1;
+var year = today.getFullYear();
+
 var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
                      {name: 'Yankees',  ID: 'a09ec676-f887-43dc-bbb3-cf4bbaee9a18'},
                      {name: 'Rays',     ID:   'bdc11650-6f74-49c4-875e-778aeb7632d9'},
@@ -34,8 +40,13 @@ var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
 
                        ];
 
+
+venues  = [];
+
+
+
 //league schedule API
-var leagueScheduleAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/2018/REG/schedule.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var leagueScheduleAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/2018/REG/schedule.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullScheduleAPI() {
     $.get(leagueScheduleAPI, function(data){
@@ -52,9 +63,10 @@ function pullScheduleAPI() {
 }
 
 //daily schedule API
-var dailyScheduleAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/2018/05/31/schedule.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var dailyScheduleAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/' +year+'/'+month+'/'+day+'/schedule.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullDailyScheduleAPI() {
+       
     $.get(dailyScheduleAPI, function(data){
         var libraryArray = [];
         var keys = Object.keys(data);
@@ -70,7 +82,7 @@ function pullDailyScheduleAPI() {
 
 
 //game boxscore API
-var gameBoxscoreAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/b6f922df-46c6-483c-8d3b-4235a6fc4520/boxscore.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var gameBoxscoreAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/b6f922df-46c6-483c-8d3b-4235a6fc4520/boxscore.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullGameBoxscoreAPI() {
     $.get(gameBoxscoreAPI, function(data){
@@ -87,7 +99,7 @@ function pullGameBoxscoreAPI() {
 }
 
 //venues API  DOESNT HAVE LONGITUDE AND LATTITUDE
-var venuesAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/league/venues.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var venuesAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/league/venues.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullVenuesAPI() {
     $.get(venuesAPI, function(data){
@@ -104,7 +116,7 @@ function pullVenuesAPI() {
 }
 
 //player profile API 
-var playerAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/players/6e1cac5c-b059-4b80-a267-5143b19efb27/profile.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var playerAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/players/6e1cac5c-b059-4b80-a267-5143b19efb27/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullPlayerAPI(){
     $.get(playerAPI, function(data){
@@ -121,7 +133,7 @@ function pullPlayerAPI(){
 }
 
 //season statistics API
-var seasonStatsAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/statistics.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var seasonStatsAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/statistics.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullSeasonStatsAPI(){
     $.get(seasonStatsAPI, function(data){
@@ -138,7 +150,7 @@ function pullSeasonStatsAPI(){
 }
 
 //standings API 
-var standingsAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/standings.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var standingsAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/standings.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullStandingsAPI(){
     $.get(standingsAPI, function(data){
@@ -155,8 +167,8 @@ function pullStandingsAPI(){
 }
 
 //team profile API
-//var teamProfileAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/profile.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
-var teamProfileAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/12079497-e414-450a-8bf2-29f91de646bf/profile.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+//var teamProfileAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/aa34e0ed-f342-4ec6-b774-c79b47b60e2d/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
+var teamProfileAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/12079497-e414-450a-8bf2-29f91de646bf/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 function pullTeamProfileAPI(){
     $.get(teamProfileAPI, function(data){
         var libraryArray = [];
@@ -172,7 +184,7 @@ function pullTeamProfileAPI(){
 }
 
 //game summary API
-var gameSummaryAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/b6f922df-46c6-483c-8d3b-4235a6fc4520/summary.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+var gameSummaryAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/b6f922df-46c6-483c-8d3b-4235a6fc4520/summary.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
 
 function pullGameSummaryAPI(){
     $.get(gameSummaryAPI, function(data){
