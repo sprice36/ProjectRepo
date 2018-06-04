@@ -128,7 +128,7 @@ function getTeamInfo(team){
         return element.name === team;
         })[0];
     var teamKey = foundIt.ID;
-    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
     /*console.log(foundIt);
     console.log(teamKey);
     console.log(teamInfoURL); */
@@ -140,7 +140,7 @@ function getTeamInfo(team){
         keys.forEach(function(aKey){
             var aLibrary = data[aKey];
             libraryArray.push(aLibrary);
-             console.log(libraryArray);
+         //    console.log(libraryArray);
 
             libraryArray.forEach(function (data){
                 var itemsArray = [];
@@ -158,7 +158,7 @@ function getPlayerInfo(team){
         return element.name === team;
         })[0];
     var teamKey = foundIt.ID;
-    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=bacyjb6cyn45qk6zdcz6hfeg';
+    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
     /*console.log(foundIt);
     console.log(teamKey);
     console.log(teamInfoURL); */
@@ -305,7 +305,7 @@ function getGame(gameID) {
                   var homeTeamName = getTeamName(homeTeam);
                   console.log("found it at" + gameinfo);
                   console.log("away team:"+  awayTeamName);
-                  console.log("home team:" + homeTeamName);
+                  console.log("home team:" + homeTeamName); 
                   
                   var venueData = Object.values(data['venue']);
                   console.log("venue information + "+ venueData);
@@ -321,5 +321,5 @@ function getGame(gameID) {
 }
 
 //getGameIDs();
-getGame('5f5d7326-79d1-4f9b-a268-0644809485eb');
+//getGame('cba47e07-5e9a-4c5a-b59d-87ac83126c11');
 
