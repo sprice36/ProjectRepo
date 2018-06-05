@@ -123,32 +123,109 @@ function popNavDate(cleanDate){
     })
 }
 
+function getGame(gameID) {
+    $.get(leagueScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+        var $venueField = '';
+      //  console.log(keys);
+        var games
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+        //   console.log(libraryArray);
 
-// function startTheProgram(URL){ 
-//     var ajaxRequest = $.get(URL);
+           libraryArray.forEach(function (data){
+            var itemsArray = [];
+            var items = Object.values(data);
+             //console.log(items);
+
+             items.forEach(function (data){
+                var gamesData = Object.values(data);
+                var gameinfo = gamesData[0];
+                  //    console.log(gameinfo);
+                
+                 if (gameinfo == gameID){
+
+                  var awayTeam = data['away_team'];
+                  var homeTeam = data['home_team'];
+                   
+                  var awayTeamName = getTeamName(awayTeam);
+                  var homeTeamName = getTeamName(homeTeam);
+                  if (awayTeamName != undefined || homeTeamName != undefined){
+                  console.log(homeTeamName);
+                  console.log(awayTeamName);
+                 }
+                  /*console.log("found it at" + gameinfo);
+                  console.log("away team:"+  awayTeamName);
+                  console.log("home team:" + homeTeamName); 
+                  
+                  var venueData = Object.values(data['venue']);
+                  $venueField = $(`<p>`, {text : `${venueData}` });
+                   for (var i = 0; i < 1; i++){
+                  
+                  $(document.body).append($venueField);   
+                  }*/
+                  
+                } 
+        
+             });
+           });
+             
+        });
+        //getLocation(gameID);
+        return gameID;
+    });
+}
+
+
+function popGames(gameID){
+       /* gameID.forEach(function(print){
+        var newSelector = $(`<option value=${print}>${print}</option>`);
+           
+        
+        $('[data-target-games]').append(newSelector); */
+   /* var newSelector = $(`<option value=${print}>${print}</option>`);
+    $('[data-target-games]').append(newSelector); */
+}
+
+
+function startTheProgram(URL){ 
+    var ajaxRequest = $.get(URL);
     
-//     ajaxRequest
-//     .then(getTeamNames)
-//     .then(popTeamNames)
-// }
+    ajaxRequest
+    .then(getTeamNames)
+    .then(popTeamNames)
+}
+
+function nextStep(URL){
+    var ajaxRequest = $.get(URL);
+
+    ajaxRequest
+    .then(getTeamIDS)
+    .then(getAndPopPlayerPositions)
+    // .then(popPlayerPositions)
+}
+
+function gameSchedule(URL){
+    var ajaxRequest = $.get(URL)
+
+    ajaxRequest
+    .then(pullSchedule)
+    .then(popNavDate)
+}
+/*
+function populateGames(URL){
+    var ajaxRequest = $.get(URL)
+
+    ajaxRequest
+    .then(getGame)
+    .then(popGames)
+    //.then(getLocation)
+} */
 
 
-// function nextStep(URL){
-//     var ajaxRequest = $.get(URL);
-
-//     ajaxRequest
-//     .then(getTeamIDS)
-//     .then(getAndPopPlayerPositions)
-//     // .then(popPlayerPositions)
-// }
-// function gameSchedule(URL){
-    // var ajaxRequest = $.get(URL)
-
-    // ajaxRequest
-    // .then(pullSchedule)
-    // .then(popNavDate)
-// }
-
-// startTheProgram(hierarchy);
-// nextStep(hierarchy);
-// gameSchedule(leagueScheduleAPI);
+startTheProgram(hierarchy);
+nextStep(hierarchy);
+gameSchedule(leagueScheduleAPI);
+//populateGames(leagueScheduleAPI);

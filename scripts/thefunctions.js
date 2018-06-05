@@ -55,6 +55,55 @@ var teams  =       [ {name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
 
 // }
 
+//getTeamID('Braves');
+//nice to have
+function getStandings(){
+    
+  $.get(standingsAPI, function(data){
+    var libraryArray = [];
+    var keys = Object.keys(data);
+   // console.log(keys);
+
+    keys.forEach(function(aKey){
+        var aLibrary = data[aKey];
+        libraryArray.push(aLibrary);
+     //   console.log(libraryArray);
+    
+    libraryArray.forEach(function (data){
+        var itemsArray = [];
+        var items = Object.values(data['season']);
+         //console.log(items);
+    
+         items[3].forEach(function (data){
+        var leaguesData = Object.values(data);
+        console.log(leaguesData);
+
+        leaguesData[3].forEach(function(data) {
+            var divisionData = Object.values(data);
+            console.log(divisionData);
+
+       /* divisionData[3].forEach(function(data) {
+            var teamData = Object.values(data);
+              console.log(teamData);
+           // if (teamName == data.name){
+             //   var ID = data.id;
+               // console.log(data.name);
+                //return console.log(data.name + '    ' + ID);
+                
+                 //}
+                         
+           }) */
+          })
+       });
+     }); 
+   });
+});
+
+}
+
+//getStandings();
+
+
 var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
                      {name: 'Yankees',  ID: 'a09ec676-f887-43dc-bbb3-cf4bbaee9a18'},
                      {name: 'Rays',     ID:   'bdc11650-6f74-49c4-875e-778aeb7632d9'},
@@ -88,8 +137,40 @@ var teams  =        [{name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe32671743
 
                        ];
 
-venues = 
+var images = [  {name: 'Orioles', image: 'https://securea.mlb.com/assets/images/0/8/2/267952082/cuts/320x180/cut.jpg'},
+                {name: 'Red Sox', image: 'https://securea.mlb.com/assets/images/2/8/8/267952288/cuts/320x180/cut.jpg'},
+                {name: 'White Sox', image: 'https://securea.mlb.com/assets/images/2/9/0/267952290/cuts/320x180/cut.jpg'},
+                {name: 'Indians', image: 'https://securea.mlb.com/assets/images/2/9/4/267952294/cuts/320x180/cut.jpg'},
+                {name: 'Tigers', image: 'https://securea.mlb.com/assets/images/1/9/8/267952198/cuts/320x180/cut.jpg'},
+                {name: 'Astros' , image: 'https://securea.mlb.com/assets/images/3/0/6/267952306/cuts/320x180/cut.jpg'},
+                {name: 'Royals', image: 'https://securea.mlb.com/assets/images/3/0/8/267952308/cuts/320x180/cut.jpg'},
+                {name: 'Angels', image: 'https://securea.mlb.com/assets/images/3/1/2/267952312/cuts/320x180/cut.jpg'},
+                {name: 'Twins' , image: 'https://securea.mlb.com/assets/images/4/1/2/267952412/cuts/320x180/cut.jpg'},
+                {name: 'Yankees' , image: 'https://securea.mlb.com/assets/images/4/2/0/267952420/cuts/320x180/cut.jpg'},
+                {name: 'Athletics' , image: 'https://securea.mlb.com/assets/images/5/2/0/267952520/cuts/320x180/cut.jpg'},
+                {name: 'Mariners' , image: 'https://securea.mlb.com/assets/images/4/9/6/267952496/cuts/320x180/cut.jpg'},
+                {name: 'Rays', image: 'https://securea.mlb.com/assets/images/4/2/8/267952428/cuts/320x180/cut.jpg'}, 
+                {name: 'Rangers' , image: 'https://securea.mlb.com/assets/images/4/3/2/267952432/cuts/320x180/cut.jpg'},
+                {name: 'BlueJays', image: 'https://securea.mlb.com/assets/images/5/3/2/267952532/cuts/320x180/cut.jpg'},
+                {name: 'Diamondbacks', image: 'https://securea.mlb.com/assets/images/7/1/8/267947718/cuts/320x180/cut.jpg'},
+                {name: 'Braves' , image: 'https://securea.mlb.com/assets/images/2/0/8/267951208/cuts/320x180/cut.jpg'},
+                {name: 'Cubs' , image: 'https://securea.mlb.com/assets/images/7/1/2/267951712/cuts/320x180/cut.jpg'},
+                {name: 'Reds' , image: 'https://securea.mlb.com/assets/images/7/2/2/267951722/cuts/320x180/cut.jpg'},
+                {name: 'Rockies' , image: 'https://securea.mlb.com/assets/images/7/2/4/267951724/cuts/320x180/cut.jpg'},
+                {name: 'Dodgers' , image: 'https://securea.mlb.com/assets/images/7/2/8/267951728/cuts/320x180/cut.jpg'},
+                {name: 'Marlins' , image: 'https://securea.mlb.com/assets/images/8/3/4/267951834/cuts/320x180/cut.jpg'}, 
+                {name: 'Brewers' , image: 'https://securea.mlb.com/assets/images/8/4/0/267951840/cuts/320x180/cut.jpg'}, 
+                {name: 'Mets', image: 'https://securea.mlb.com/assets/images/5/5/6/267951556/cuts/320x180/cut.jpg'},
+                {name: 'Phillies' , image: 'https://securea.mlb.com/assets/images/8/6/0/267951860/cuts/320x180/cut.jpg'},
+                {name: 'Pirates' , image: 'https://securea.mlb.com/assets/images/9/6/2/267951962/cuts/320x180/cut.jpg'},
+                {name: 'Padres' , image: 'https://securea.mlb.com/assets/images/9/6/6/267951966/cuts/320x180/cut.jpg'},
+                {name: 'Giants' , image: 'https://securea.mlb.com/assets/images/9/7/0/267951970/cuts/320x180/cut.jpg'},
+                {name: 'Cardinals' , image: 'https://securea.mlb.com/assets/images/8/7/2/267951872/cuts/320x180/cut.jpg'},
+                {name: 'Nationals' , image: 'https://securea.mlb.com/assets/images/8/7/6/267951876/cuts/320x180/cut.jpg'}
+          ];
+             
 
+//getImage('Mets');
 
 // function getTeamName(idNumber){
 //     $.get(standingsAPI, function(data){
@@ -137,6 +218,43 @@ venues =
 
 // function getTeamInfo(team){
      
+<<<<<<< HEAD
+    var foundIt = $.grep(teams, function(element){
+        return element.name === team;
+        })[0];
+    var teamKey = foundIt.ID;
+    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
+    /*console.log(foundIt);
+    console.log(teamKey);
+    console.log(teamInfoURL); */
+                            
+    $.get(teamInfoURL, function (data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+        //console.log(keys);
+        keys.forEach(function(aKey){
+            var aLibrary = data[aKey];
+            libraryArray.push(aLibrary);
+         //    console.log(libraryArray);
+
+            libraryArray.forEach(function (data){
+                var itemsArray = [];
+                var items = Object.values(data.indexOf(4));
+                 console.log(items);
+                });
+        });  
+    });
+}
+
+//getTeamInfo('Braves');
+
+function getPlayerInfo(team){
+    var foundIt = $.grep(teams, function(element){
+        return element.name === team;
+        })[0];
+    var teamKey = foundIt.ID;
+    var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
+=======
     // var foundIt = $.grep(teams, function(element){
         // return element.name === team;
         // })[0];
@@ -236,6 +354,7 @@ venues =
     // })[0];
     // var teamKey = foundIt.ID;
     // var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=' + myAPIKey;
+>>>>>>> master
     /*console.log(foundIt);
     console.log(teamKey);
     console.log(teamInfoURL); */
@@ -269,6 +388,21 @@ venues =
 
 //getPlayerInfo('Braves');
 
+<<<<<<< HEAD
+function getLocation(gameID){
+
+    $.get(dailyScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+       // console.log(keys);
+        var locationObject = {};
+        var locationArray = [];
+        var gameIdentification = [];
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+            // console.log(libraryArray);
+=======
 
 // function allTeamArray(data, bool){
 //     teamArray = []
@@ -357,12 +491,46 @@ venues =
 //            var aLibrary = data[aKey];
 //            libraryArray.push(aLibrary);
 //             // console.log(libraryArray);
+>>>>>>> master
              
 //             libraryArray.forEach(function (data){
 //                 var itemsArray = [];
 //                 var items = Object.values(data);
 //               //    console.log(items);
             
+<<<<<<< HEAD
+                 items.forEach(function (data){
+                var scheduleData = Object.values(data);
+                  console.log(scheduleData);
+                  gameIdentification.push(scheduleData[0]);
+                //console.log("gameIdentification no" + gameIdentification);
+        
+                  //  console.log("gameIdentification no" + gameIdentification);
+                if (gameIdentification != gameID){
+                     gameIdentification.pop();
+                    // console.log("gameIdentification no" + gameIdentification);
+                }
+                else  {
+                scheduleData.forEach(function(data) {
+                    var gameData = Object.values(data);
+                   // console.log(gameData); 
+                   
+                       var location = gameData[12];
+                 
+                       if (location != null && location['lat'] > 0 ){   
+                            var latString = location.lat;
+                            var latNumber = parseFloat(latString);
+                            var lngString = location.lng;
+                            var lngNumber = parseFloat(lngString);
+                            var locationObject = {lat: latNumber , lng: lngNumber};                        
+                            locationArray.push(locationObject);
+                        
+                        }
+                      });
+                    }
+                 
+                 });  
+=======
 //                  items.forEach(function (data){
 //                 var scheduleData = Object.values(data);
 //                  //   console.log(scheduleData);
@@ -381,9 +549,104 @@ venues =
 //                         }
 //                       }); 
 //                  });  
+>>>>>>> master
                 
 //              }); 
            
+<<<<<<< HEAD
+         });
+        // console.log(locationArray);
+        initMap(locationArray[0]);          
+     });   
+}
+
+//getLocation('5f5d7326-79d1-4f9b-a268-0644809485eb');
+
+function getGameIDs(date){
+     
+    $.get('http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/' +date + '/schedule.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m'
+    , function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+       // console.log(keys);
+        var locationObject = {};
+        var gameIDArray = [];
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+            // console.log(libraryArray);
+             
+            libraryArray.forEach(function (data){
+                var itemsArray = [];
+                var items = Object.values(data);
+              //    console.log(items);
+            
+                 items.forEach(function (data){
+                var scheduleData = Object.values(data);
+                var gameID = scheduleData[0];
+                if (gameID != null){
+                  console.log(gameID);
+                  getGame(gameID);
+                 }
+            });
+        });
+    });
+});
+}
+
+function getGame(gameID) {
+    $.get(leagueScheduleAPI, function(data){
+        var libraryArray = [];
+        var keys = Object.keys(data);
+        var $venueField = '';
+      //  console.log(keys);
+        var games
+       keys.forEach(function(aKey){
+           var aLibrary = data[aKey];
+           libraryArray.push(aLibrary);
+        //   console.log(libraryArray);
+
+           libraryArray.forEach(function (data){
+            var itemsArray = [];
+            var items = Object.values(data);
+             //console.log(items);
+
+             items.forEach(function (data){
+                var gamesData = Object.values(data);
+                var gameinfo = gamesData[0];
+                  //    console.log(gameinfo);
+                
+                 if (gameinfo == gameID){
+
+                  var awayTeam = data['away_team'];
+                  var homeTeam = data['home_team'];
+
+                  /*var awayTeamName = getTeamName(awayTeam);
+                  var homeTeamName = getTeamName(homeTeam);
+                  console.log("found it at" + gameinfo);
+                  console.log("away team:"+  awayTeamName);
+                  console.log("home team:" + homeTeamName); 
+                  */
+                  var venueData = Object.values(data['venue']);
+                  $venueField = $(`<p>`, {text : `${venueData}` });
+                   for (var i = 0; i < 1; i++){
+                  
+                  $(document.body).append($venueField);  
+                  }
+                } 
+        
+             });
+           });
+             
+        });
+        getLocation(gameID);
+    });
+}
+
+//getGameIDs();
+//getGame('cba47e07-5e9a-4c5a-b59d-87ac83126c11');
+
+=======
 //          });
 //         // console.log(locationArray);
 //            initMap(locationArray[0]);      
@@ -392,3 +655,4 @@ venues =
 
 // //getLocation();
 
+>>>>>>> master
