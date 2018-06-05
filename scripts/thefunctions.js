@@ -1,47 +1,59 @@
 
-function getTeamID(teamName){
+// function getTeamID(teamName){
     
-  $.get(standingsAPI, function(data){
-    var libraryArray = [];
-    var keys = Object.keys(data);
-   // console.log(keys);
+//   $.get(standingsAPI, function(data){
+//     var libraryArray = [];
+//     var keys = Object.keys(data);
+//    // console.log(keys);
 
-    keys.forEach(function(aKey){
-        var aLibrary = data[aKey];
-        libraryArray.push(aLibrary);
-     //   console.log(libraryArray);
+//     keys.forEach(function(aKey){
+//         var aLibrary = data[aKey];
+//         libraryArray.push(aLibrary);
+//      //   console.log(libraryArray);
     
-    libraryArray.forEach(function (data){
-        var itemsArray = [];
-        var items = Object.values(data['season']);
-         //console.log(items);
+//     libraryArray.forEach(function (data){
+//         var itemsArray = [];
+//         var items = Object.values(data['season']);
+//          //console.log(items);
     
-         items[3].forEach(function (data){
-        var leaguesData = Object.values(data);
-       // console.log(leaguesData);
+//          items[3].forEach(function (data){
+//         var leaguesData = Object.values(data);
+//        // console.log(leaguesData);
 
-        leaguesData[3].forEach(function(data) {
-            var divisionData = Object.values(data);
-           // console.log(divisionData);
+//         leaguesData[3].forEach(function(data) {
+//             var divisionData = Object.values(data);
+//            // console.log(divisionData);
 
-        divisionData[3].forEach(function(data) {
-            var teamData = Object.values(data);
-           // console.log(teamData);
-            if (teamName == data.name){
-                var ID = data.id;
-               // console.log(data.name);
-                return console.log(data.name + '    ' + ID);
+//         divisionData[3].forEach(function(data) {
+//             var teamData = Object.values(data);
+//            // console.log(teamData);
+//             if (teamName == data.name){
+//                 var ID = data.id;
+//                // console.log(data.name);
+//                 return console.log(data.name + '    ' + ID);
                 
-                 }
+//                  }
                          
-           })
-         })
-       });
-     }); 
-   });
-});
+//            })
+//          })
+//        });
+//      }); 
+//    });
+// });
 
-}
+// }
+
+
+var teams  =       [ {name: 'Red Sox',  ID:  '93941372-eb4c-4c40-aced-fe3267174393'},
+// =======
+//            })
+//          })
+//        });
+//      }); 
+//    });
+// });
+
+// }
 
 //getTeamID('Braves');
 //nice to have
@@ -160,52 +172,53 @@ var images = [  {name: 'Orioles', image: 'https://securea.mlb.com/assets/images/
 
 //getImage('Mets');
 
-function getTeamName(idNumber){
-    $.get(standingsAPI, function(data){
-    var libraryArray = [];
-    var keys = Object.keys(data);
-   // console.log(keys);
+// function getTeamName(idNumber){
+//     $.get(standingsAPI, function(data){
+//     var libraryArray = [];
+//     var keys = Object.keys(data);
+//    // console.log(keys);
 
-    keys.forEach(function(aKey){
-        var aLibrary = data[aKey];
-        libraryArray.push(aLibrary);
-       // console.log(libraryArray);
+//     keys.forEach(function(aKey){
+//         var aLibrary = data[aKey];
+//         libraryArray.push(aLibrary);
+//        // console.log(libraryArray);
     
-    libraryArray.forEach(function (data){
-        var itemsArray = [];
-        var items = Object.values(data['season']);
-        // console.log(items);
+//     libraryArray.forEach(function (data){
+//         var itemsArray = [];
+//         var items = Object.values(data['season']);
+//         // console.log(items);
     
-         items[3].forEach(function (data){
-        var leaguesData = Object.values(data);
-       // console.log(leaguesData);
+//          items[3].forEach(function (data){
+//         var leaguesData = Object.values(data);
+//        // console.log(leaguesData);
 
-        leaguesData[3].forEach(function(data) {
-            var divisionData = Object.values(data);
-           // console.log(divisionData);
+//         leaguesData[3].forEach(function(data) {
+//             var divisionData = Object.values(data);
+//            // console.log(divisionData);
 
-        divisionData[3].forEach(function(data) {
-            var teamData = Object.values(data);
-           // console.log(teamData);
-            if (idNumber == data.id){
-                var name = data.name;
-               // console.log(data.name);
-               // console.log(data.id);
-                return console.log(name);
-            }
-           })
-         })
-       });
-     }); 
-   });
-});
-}
+//         divisionData[3].forEach(function(data) {
+//             var teamData = Object.values(data);
+//            // console.log(teamData);
+//             if (idNumber == data.id){
+//                 var name = data.name;
+//                // console.log(data.name);
+//                // console.log(data.id);
+//                 return console.log(name);
+//             }
+//            })
+//          })
+//        });
+//      }); 
+//    });
+// });
+// }
 
 
 //getTeamName('93941372-eb4c-4c40-aced-fe3267174393');
 
-function getTeamInfo(team){
+// function getTeamInfo(team){
      
+<<<<<<< HEAD
     var foundIt = $.grep(teams, function(element){
         return element.name === team;
         })[0];
@@ -241,30 +254,141 @@ function getPlayerInfo(team){
         })[0];
     var teamKey = foundIt.ID;
     var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m';
+=======
+    // var foundIt = $.grep(teams, function(element){
+        // return element.name === team;
+        // })[0];
+    // var teamKey = foundIt.ID;
+    // var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=' + myAPIKey;
+    // console.log(foundIt);
+    // console.log(teamKey);
+    // console.log(teamInfoURL);
+                            
+    // $.get(teamInfoURL, function (data){
+        // var libraryArray = [];
+        // var keys = Object.keys(data);
+        // console.log(keys);
+        // keys.forEach(function(aKey){
+            // var aLibrary = data[aKey];
+            // libraryArray.push(aLibrary);
+            // console.log(libraryArray);
+        // });
+        
+        // libraryArray.forEach(function (data){
+            // var itemsArray = [];
+        // });  
+        // console.log(libraryArray);
+    // });
+// }
+
+// getTeamInfo('Braves');
+
+// function getPlayerInfo(team){
+    // var foundIt = $.grep(teams, function(element){
+        // return element.name === team;
+    // })[0];
+    // var teamKey = foundIt.ID;
+    // var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=' + myAPIKey;
     /*console.log(foundIt);
     console.log(teamKey);
     console.log(teamInfoURL); */
-                            
-    $.get(teamInfoURL, function (data){
-        var libraryArray = [];
-        var keys = Object.keys(data);
-        console.log(keys);
-        keys.forEach(function(aKey){
-            var aLibrary = data[aKey];
-            libraryArray.push(aLibrary);
-             //console.log(libraryArray);
+    // var libraryArray = [];
+    // var libraryArray2 = [];
+    // var itemsArray = [];
+    // var teamProfile = localStorage.getItem('teamProfile');
+    // teamProfile = JSON.parse(teamProfile);
+    // teamProfile.forEach(function(data){
+        // var teamName = data['name'];
+        // console.log(teamName)
+    // })
+    // $.get(teamInfoURL, function (data){
+        // var keys = Object.keys(data);
+        // console.log(keys);
+        // keys.forEach(function(aKey){
+            // var aLibrary = data[aKey];
+            // libraryArray.push(aLibrary);
+            // libraryArray2.push(aLibrary);
+            // libraryArray.forEach(function (data){
+                // var items = Object.values(data);
+                // itemsArray.push(items);
+            // });
+        // });  
+        // var items = Object.values(libraryArray[4]);
+        
+        // console.log(items);
+        // console.log(libraryArray);
+        
+        // $('[data-team-team]').append(libraryArray[0]);
+        // $('[data-team-team]').append(items[5]);
+        // $('[data-team-team]').append(items[6]);
+        // $('[data-team-team]').removeClass("hidden");
 
-            libraryArray.forEach(function (data){
-                var itemsArray = [];
-                var items = Object.values(data);
-                 console.log(items);
-                });
-        });  
-    });
-}
+        // var playersOnTeam = libraryArray[8];
+        // console.log(playersOnTeam)
+        // playersOnTeam.forEach(function(player) {
+            // var playerInfoArr = []
+            
+            // var playerName = player.full_name
+            // playerInfoArr.push(playerName);
+            // var playerJersey = player.jersey_number
+            // playerInfoArr.push(playerJersey);
+            // var playerBirth = player.birthdate
+            // playerInfoArr.push(playerBirth);
+            // var playerPosition = player.primary_position
+            // playerInfoArr.push(positionName[playerPosition]);
+
+            // var newPlayerInfo = $('<div>');
+            // playerInfoArr.forEach(function(blurb){
+                // $(newPlayerInfo).append(blurb);
+            // })
+            // $('[data-team-player]').append(newPlayerInfo);
+
+            
+        // })
+    // });
+// }
+
+// function getPositionInfo(team, bool){
+    // var foundIt = $.grep(teams, function(element){
+        // return element.name === team;
+    // })[0];
+    // var teamKey = foundIt.ID;
+    // var teamInfoURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + teamKey  + '/profile.json?api_key=' + myAPIKey;
+>>>>>>> master
+    /*console.log(foundIt);
+    console.log(teamKey);
+    console.log(teamInfoURL); */
+    // var libraryArray = [];
+    // var libraryArray2 = [];
+    // var itemsArray = [];
+    
+    // $.get(teamInfoURL, function (data){
+        // var keys = Object.keys(data);
+        // console.log(keys);
+        // keys.forEach(function(aKey){
+            // var aLibrary = data[aKey];
+            // libraryArray.push(aLibrary);
+            // libraryArray2.push(aLibrary);
+            // libraryArray.forEach(function (data){
+                // var items = Object.values(data);
+                // itemsArray.push(items);
+            // });
+        // });  
+        // var items = Object.values(libraryArray[4]);
+        
+        // console.log(items);
+        // var playersOnTeam = (libraryArray[8]);
+        // playersOnTeam.forEach(function(datum){
+            // if (datum.position == bool){
+                // console.log(datum);
+            // }
+        // })
+// })
+// }
 
 //getPlayerInfo('Braves');
 
+<<<<<<< HEAD
 function getLocation(gameID){
 
     $.get(dailyScheduleAPI, function(data){
@@ -278,12 +402,103 @@ function getLocation(gameID){
            var aLibrary = data[aKey];
            libraryArray.push(aLibrary);
             // console.log(libraryArray);
+=======
+
+// function allTeamArray(data, bool){
+//     teamArray = []
+//     data.forEach(function(obj){
+//         teamArray.push(obj['name']);
+//     })
+//     teamArray.forEach(function(obj, index){
+//         setTimeout(function() {
+//         console.log(obj);
+        
+//         // getPositionInfo(obj, bool);
+//         // }, 1000 * index);
+        
+//     })
+    
+// })
+// }
+
+
+
+// function getAllTeamInfo(data){
+//     var allTeamIDS = []
+//     var teamIDS = Object.values(data);
+//     // console.log(teamIDS);
+//     teamIDS.forEach(function(thing){
+//         var teamID = thing['ID'];
+//         // console.log(teamID);
+//         allTeamIDS.push(teamID);
+//     })
+//     // console.log(allTeamIDS);
+//     var allTeamInfo = []
+//     allTeamIDS.forEach(function(value, index){
+//         setTimeout(function() {
+//             var teamNameURL = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + value + '/profile.json?api_key=' + myAPIKey;
+//             $.get(teamNameURL, function(thing){
+//                 var playersOnTeam = thing['players']
+//             playersOnTeam.forEach(function(loop){
+//                 var playerCollection = {}
+//                 var playerID = loop['id'];
+//                 var playerName = loop['full_name'];
+//                 var playerPosition = loop['primary_position'];
+//                 // var playerBirth = loop[''];
+//                 var playerAge = loop['birthdate'];
+//                 var playerStarted = loop['pro_debut'];
+//                 playerCollection['name'] = playerName;
+//                 playerCollection['ID'] = playerID;
+//                 // playerCollection['Birth place'] = playerBirth;
+//                 playerCollection['Position'] = playerPosition;
+//                 playerCollection['Birthday'] = playerAge;
+//                 playerCollection['Debut'] = playerStarted;
+//                 allTeamInfo.push(playerCollection);
+//             })   
+//             console.log(allTeamInfo);
+//             localStorage.setItem('allplayer', JSON.stringify(allTeamInfo));
+//             })
+//         }, 1500 * index)
+//     })
+// }
+// // setTimeout(getAllTeamInfo, 2000, teams);
+
+// var allPlayer = localStorage.getItem('allplayer');
+// var allPlayer = JSON.parse(allPlayer);
+
+
+// function positionChecker(arr, positionPickedShort){
+//     arr.forEach(function(val){
+//         if (val['Position'] === positionPickedShort){
+//             var newDiv = $('<div>');
+//             newDiv.append(JSON.stringify(val));
+//             console.log(val);
+//             console.log(newDiv);
+//             $('[data-player-info]').append(newDiv);
+//         }
+//     })
+// }
+// =======
+// function getLocation(){
+
+//     $.get(dailyScheduleAPI, function(data){
+//         var libraryArray = [];
+//         var keys = Object.keys(data);
+//        // console.log(keys);
+//         var locationObject = {};
+//         var locationArray = [];
+//        keys.forEach(function(aKey){
+//            var aLibrary = data[aKey];
+//            libraryArray.push(aLibrary);
+//             // console.log(libraryArray);
+>>>>>>> master
              
-            libraryArray.forEach(function (data){
-                var itemsArray = [];
-                var items = Object.values(data);
-              //    console.log(items);
+//             libraryArray.forEach(function (data){
+//                 var itemsArray = [];
+//                 var items = Object.values(data);
+//               //    console.log(items);
             
+<<<<<<< HEAD
                  items.forEach(function (data){
                 var scheduleData = Object.values(data);
                   console.log(scheduleData);
@@ -315,9 +530,30 @@ function getLocation(gameID){
                     }
                  
                  });  
+=======
+//                  items.forEach(function (data){
+//                 var scheduleData = Object.values(data);
+//                  //   console.log(scheduleData);
+         
+//                 scheduleData.forEach(function(data) {
+//                     var gameData = Object.values(data);
+//                        var location = gameData[12];
+                       
+//                        if (location != null && location['lat'] > 0){   
+//                             var latString = location.lat;
+//                             var latNumber = parseFloat(latString);
+//                             var lngString = location.lng;
+//                             var lngNumber = parseFloat(lngString);
+//                             var locationObject = {lat: latNumber , lng: lngNumber};                        
+//                             locationArray.push(locationObject);
+//                         }
+//                       }); 
+//                  });  
+>>>>>>> master
                 
-             }); 
+//              }); 
            
+<<<<<<< HEAD
          });
         // console.log(locationArray);
         initMap(locationArray[0]);          
@@ -410,3 +646,13 @@ function getGame(gameID) {
 //getGameIDs();
 //getGame('cba47e07-5e9a-4c5a-b59d-87ac83126c11');
 
+=======
+//          });
+//         // console.log(locationArray);
+//            initMap(locationArray[0]);      
+//      });   
+// }
+
+// //getLocation();
+
+>>>>>>> master

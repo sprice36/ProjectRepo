@@ -1,54 +1,33 @@
-var NAV_ITEM = '[data-nav-item]';
-var MATCHUP_CONTAINER = '[matchup-container]';
-var LOCATION_CONTAINER = '[location-container]';
 
-var $nav_item = $(NAV_ITEM);
-var $matchup_container = $(MATCHUP_CONTAINER);
+// function teamListener(){
+//     $('[data-target-teams]').on('change', function(data){
+//         $('[data-team-team]').html($('[data-target-team]').children());
+//         $('[data-team-player]').html($('[data-target-]').children());
+//         var teamPicked = $('[data-target-teams] option:selected').text();
+//         console.log(teamPicked);
+//         // getTeamInfo(teamPicked);
+//         getPlayerInfo(teamPicked);
+//         $('[data-team-div]').removeClass('hidden');
+//         $('[data-position-div]').addClass('hidden');
+//     })
+    
+// }
 
-
-function teamListener(){
-    /*
-    $('[data-target-teams]').on('change', function(data){
-        $('[data-team-team]').html($('[data-target-team]').children());
-        $('[data-team-player]').html($('[data-target-]').children());
-        var teamPicked = $('[data-target-teams] option:selected').text();
-        // console.log(teamPicked);
-        // getTeamInfo(teamPicked);
-        getPlayerInfo(teamPicked);
-        $('[data-team-div]').removeClass('hidden');
-        $('[data-position-div]').addClass('hidden');
-    })
-    */
-}
-
-function gameListener(){
-    $('[data-target-games]').on('change', function(data){
-        $('[data-target-games]').html($('[data-target-games]').children());
-        var gamePicked = $('[data-target-games] option:selected').text();
-        getLocation(gamePicked);
-        $('[data-target-location]').removeClass('hiddden');
-       // console.log(gamePicked);
-       // return(gamePicked);
-    })
-}
-
-
-function positionListener(){
-    /*
-    getAndPopPlayerPositions();
-    $('[data-target-positions]').on('change', function(data){
-        var positionPicked = $('[data-target-positions] option:selected').text();
-        var positionLong = Object.values(positionName);
-        console.log(positionLong);
-        var positionShort = Object.keys(positionName);
-        var positionPickedShort = positionShort[positionLong.indexOf(positionPicked)];
-        console.log(positionPickedShort);
-        positionChecker(allPlayer, positionPickedShort);
-        $('[data-team-div]').addClass('hidden');
-        $('[data-position-div]').removeClass('hidden');
+// function positionListener(){
+//     getAndPopPlayerPositions();
+//     $('[data-target-positions]').on('change', function(data){
+//         var positionPicked = $('[data-target-positions] option:selected').text();
+//         var positionLong = Object.values(positionName);
+//         console.log(positionLong);
+//         var positionShort = Object.keys(positionName);
+//         var positionPickedShort = positionShort[positionLong.indexOf(positionPicked)];
+//         console.log(positionPickedShort);
+//         positionChecker(allPlayer, positionPickedShort);
+//         $('[data-team-div]').addClass('hidden');
+//         $('[data-position-div]').removeClass('hidden');
         
-    }) */
-} 
+//     })
+// }
 
 function dateListener(){
     $('[data-target-schedule]').on('change', function(data){
