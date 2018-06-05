@@ -157,9 +157,6 @@ var images = [  {name: 'Orioles', image: 'https://securea.mlb.com/assets/images/
                 {name: 'Nationals' , image: 'https://securea.mlb.com/assets/images/8/7/6/267951876/cuts/320x180/cut.jpg'}
           ];
              
-function getImage(team){
-    return team.image;
-}
 
 //getImage('Mets');
 
@@ -329,9 +326,10 @@ function getLocation(gameID){
 
 //getLocation('5f5d7326-79d1-4f9b-a268-0644809485eb');
 
-function getGameIDs(){
+function getGameIDs(date){
      
-    $.get(dailyScheduleAPI, function(data){
+    $.get('http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/' +date + '/schedule.json?api_key=q6hs5yjn3f87a4ucsxzxuc6m'
+    , function(data){
         var libraryArray = [];
         var keys = Object.keys(data);
        // console.log(keys);
@@ -351,8 +349,8 @@ function getGameIDs(){
                 var scheduleData = Object.values(data);
                 var gameID = scheduleData[0];
                 if (gameID != null){
-               
-                    console.log(gameID);
+                  console.log(gameID);
+                  getGame(gameID);
                  }
             });
         });
