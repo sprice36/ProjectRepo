@@ -93,15 +93,17 @@ function dayCheck(){
 
 
 function masterPull(){
+    var savedDate = localStorage.getItem('date');
     if (dayCheck()){    
     }
-    if (!dayCheck() || null){
+    if (!dayCheck() || !savedDate){
         teamIDS = []
         teams.forEach(function(data){
             var teamID = data['ID']
             teamIDS.push(teamID);
         })
         var teamProfiles = []
+        var seasonStats = [];
         teamIDS.forEach(function(data, index){
             var teamProfileAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/teams/' + data +  '/profile.json?api_key=' + myAPIKey;
             setTimeout(function(){
@@ -122,6 +124,13 @@ function masterPull(){
             console.log(teamProfiles);
             localStorage.setItem('teamProfile', JSON.stringify(teamProfiles))
             }, index * 1000)
+            setTimeout(function(){
+            $.get('http://my-little-corse-proxy.herokuapp.comhttp://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/teams/' + data + '/statistics.json?api_key=kmwuyu7p3m8npfp6pquatdtk', function(val){
+                seasonStats.push(val);
+            })
+            localStorage.setItem('leaguestats', JSON.stringify(seasonStats))    
+            }, index * 1000)
+            console.log(seasonStats);
         })
         var leagueScheduleAPI = 'http://my-little-cors-proxy.herokuapp.com/http://api.sportradar.us/mlb/trial/v6.5/en/games/2018/REG/schedule.json?api_key=' + myAPIKey;
         $.get(leagueScheduleAPI, function(data){
@@ -155,7 +164,6 @@ function masterPull(){
                 localStorage.setItem('ranks', JSON.stringify(data))
     })
 })
-
 }
 }
 function popGameSched(){
