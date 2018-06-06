@@ -1,6 +1,6 @@
 # Welcome to The Mound. When Cracker Jacks Won't Cut It. 
 
-<img src: 'http://www.kinyu-z.net/data/wallpapers/236/1530474.jpg'>
+<img src= 'http://www.kinyu-z.net/data/wallpapers/236/1530474.jpg'>
 
 ## Table of Contents
 
@@ -20,14 +20,13 @@ Key Features
 -Search players by position or team
 -View the schedule of your team by date 
 
-##Creating The Mound
+## Creating The Mound
 
 Initially we had ideas of what the website will contain and how we want to present it to the users. We found
 APIs that were full of data and had to decide what data do the fans want the most. We narrowed down to 
 certain statistics and proceeded from there.  
 
-
-##Using The Mound
+## Using The Mound
 
 The website can be accessed by any web browser on a PC, Mac or mobile phone. When the user accesses
 the website where they can click on a variety of options including searching for their
