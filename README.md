@@ -36,7 +36,7 @@ favorite players, teams or view their teams schedules.
 
 2. Select your favorite player's position in the next option to view all the players at the specific position.
 
-3. Select today or any other date to view all the teams scheduled for that day.
+3. Select today or any other date to view all the teams scheduled to play that day.
 
 ## Where we struck out..
 There was some complications in appending multiple Google maps for each of the game's 
