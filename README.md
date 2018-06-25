@@ -45,7 +45,7 @@ locations to the div.
 ## Missing features.
 -Google Maps API
 
-## A sincere thanks to <a href = "https://developer.sportradar.com/">Sportsradar.com</a> for allowing the use of their MLB API.
+## A sincere thanks to <a href = "https://developer.sportradar.com/">Sportradar.com</a> for allowing the use of their MLB API.
 
 
 ## Created by : 
