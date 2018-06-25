@@ -6,7 +6,9 @@
 
 1. About The Mound
 
-2. Using The Mound 
+2. Creating The Mound
+
+3. Using The Mound 
 
 ## About the Mound
  
