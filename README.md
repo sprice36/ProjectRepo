@@ -40,11 +40,13 @@ favorite players, teams or view their teams schedules.
 
 ## Where we struck out..
 There was some complications in appending multiple Google maps for each of the game's 
-locations to the div. Also the baseball APIs we used wasnt as smooth as we had hoped. 
-Other than that it was a great learning experience.
+locations to the div. 
 
 ## Missing features.
 -Google Maps API
+
+## A sincere thanks to <a href = "https://developer.sportradar.com/">Sportsradar.com</a> for allowing the use of their MLB API.
+
 
 ## Created by : 
 1. Sebastian Price    <a href="https://github.com/sprice36">https://github.com/sprice36</a>    
