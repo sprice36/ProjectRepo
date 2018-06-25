@@ -32,7 +32,7 @@ The website can be accessed by any web browser on a PC, Mac or mobile phone. Whe
 the website where they can click on a variety of options including searching for their
 favorite players, teams or view their teams schedules.
 
-1.Select your favorite team in the left most option to view the players on the current roster for this season. 
+1. Select your favorite team in the left most option to view the players on the current roster for this season. 
 
 2. Select your favorite player's position in the next option to view all the players at the specific position.
 
